@@ -24,14 +24,10 @@ class ListingsPage extends Component {
 
     filterUsersList(event) {
         if (!event.target.value) {
-            console.log(this.props.users);
             this.setState({ users: this.props.users });
         } else {
             let updatedList = Object.assign([], this.state.users);
-            updatedList = updatedList.filter((user) => {
-                return user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
-
-            });
+            updatedList = updatedList.filter((user) => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1);
             this.setState({ users: updatedList });
         }
     }
@@ -41,22 +37,21 @@ class ListingsPage extends Component {
         const { users } = this.state;
         return (
 
+            <Tabs className="spacing">
+                <Tab label="Users" >
+                    <div className="wrapper">
+                        <TextField className="full-width" hintText="Search Users" onChange={this.filterUsersList.bind(this)} />
+                        <UsersList users={users} />
+                    </div>
+                </Tab>
+                <Tab label="I WANT YOU TO LAUGH!" >
+                    <div className="wrapper">
+                        <img className="img-responsive center-block" src="http://react.rocks/images/converted/react-komik.jpg" />
+                    </div>
+                </Tab>
 
-                <Tabs className="spacing">
-                    <Tab label="Users" >
-                        <div className="wrapper">
-                            <TextField className="full-width" hintText="Search Users" onChange={this.filterUsersList.bind(this)} />
-                            <UsersList users={users} />
-                        </div>
-                    </Tab>
-                    <Tab label="I WANT YOU TO LAUGH!" >
-                        <div className="wrapper">
-                            <img className="img-responsive center-block" src="http://react.rocks/images/converted/react-komik.jpg" />
-                        </div>
-                    </Tab>
+            </Tabs>
 
-                </Tabs>
-    
 
         );
     }

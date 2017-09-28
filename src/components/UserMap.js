@@ -21,7 +21,6 @@ const UserMap = compose(
   lifecycle({
     componentWillMount() {
       this.setState({ markers: [] })
-      console.log(this.props);
     }
 
   })

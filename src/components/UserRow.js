@@ -32,7 +32,7 @@ class UserRow extends Component {
 }
 
 UserRow.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
 };
 
 export default UserRow;
